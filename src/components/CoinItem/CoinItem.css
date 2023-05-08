@@ -1,0 +1,21 @@
+.coin-image {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.coin {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.coin-name {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  text-align: end;
+}
+
+.coin-name > p {
+  margin-block-end: 0.5rem;
+}
