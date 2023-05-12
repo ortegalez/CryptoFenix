@@ -6,3 +6,10 @@
 .navbar-img {
   width: 3rem;
 }
+
+/* .searchList {
+  position: fixed;
+  top: 4.5rem;
+  z-index: 9999;
+  max-height: 24rem;
+} */

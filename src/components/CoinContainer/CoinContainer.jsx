@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import "../Coin/Coin.css";
+import "../CoinContainer/CoinContainer.css";
 import { Link, useParams } from "react-router-dom";
 
-const Coin = () => {
+const CoinContainer = () => {
   const [coin, setCoin] = useState({});
   const { idCoin } = useParams();
 
@@ -21,7 +21,7 @@ const Coin = () => {
   console.log(coin);
 
   return (
-    <div>
+    <div className="min-vh-100">
       {coin && (
         <div className="m-3">
           <div className="text-primary">
@@ -37,7 +37,9 @@ const Coin = () => {
             <span className="border pe-2 ps-2 pt-1 pb-1 rounded-2 fw-bolder text-muted mx-auto text-uppercase">
               {coin.symbol}
             </span>
-            <span>Rank #{coin.market_cap_rank}</span>
+            <span className="btn btn-primary">
+              Rank #{coin.market_cap_rank}
+            </span>
           </div>
 
           <h3>About</h3>
@@ -50,4 +52,4 @@ const Coin = () => {
   );
 };
 
-export default Coin;
+export default CoinContainer;

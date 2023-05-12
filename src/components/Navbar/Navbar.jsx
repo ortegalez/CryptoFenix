@@ -1,11 +1,22 @@
 import React from "react";
-import { RiCoinsFill } from "react-icons/ri";
 
 import "../Navbar/Navbar.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logoFenix from "/public/logoFenix.png";
+import { useState } from "react";
+import { useCoinContext } from "../../context/CoinContext";
+import SearchList from "../SeachList/SearchList";
 
 const Navbar = () => {
+  const { data } = useCoinContext();
+  const [search, setSearch] = useState("");
+
+  // const filteredCoins = data.filter(
+  //   (coin) =>
+  //     coin.name.toLowerCase().includes(search.toLowerCase()) ||
+  //     coin.symbol.toLowerCase().includes(search.toLowerCase())
+  // );
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary ">
       <div className="container-fluid">
@@ -47,15 +58,12 @@ const Navbar = () => {
             </li>
           </ul>
           <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search coin..."
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
+            <div
+              className="d-flex flex-column align-items-start m-3 p-2"
+              style={{ width: "24rem" }}
+            >
+              <SearchList />
+            </div>
           </form>
         </div>
       </div>

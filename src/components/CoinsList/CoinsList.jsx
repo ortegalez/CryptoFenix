@@ -1,5 +1,6 @@
 import React from "react";
 import CoinItem from "../CoinItem/CoinItem";
+import TableTitleCoinList from "../TableTitleCoinList/TableTitleCoinList";
 
 const titles = [
   "#",
@@ -10,16 +11,17 @@ const titles = [
   "Market Cap",
 ];
 
-const CoinsList = ({ coins }) => {
+const CoinsList = ({ coins, search }) => {
   return (
     <div>
       <table className="table table-hover w-100">
         <thead>
-          <tr>
+          <TableTitleCoinList />
+          {/* <tr>
             {titles.map((title) => (
               <th key={title}>{title}</th>
             ))}
-          </tr>
+          </tr> */}
         </thead>
 
         <tbody>
