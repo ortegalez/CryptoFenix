@@ -13,7 +13,8 @@ const SearchList = () => {
       coin.symbol.toLowerCase().includes(search.toLowerCase())
   );
 
-  console.log(filteredCoins.length);
+  console.log(filteredCoins);
+  console.log(search);
 
   return (
     <>
@@ -32,44 +33,42 @@ const SearchList = () => {
             />
           </form>
 
-          {search == "" ? null : (
+          {filteredCoins.length > 0 && search !== "" ? (
             <ul
               className="list-group overflow-y-scroll mt-1 searchList"
               style={{ width: "24rem" }}
             >
-              {filteredCoins.length !== 0 ? (
-                filteredCoins.map((coin) => (
-                  <Link to={`/coin/${coin.id}`}>
-                    <li
-                      key={coin.id}
-                      className="list-group-item d-flex justify-content-between"
-                    >
-                      <div>
-                        <img
-                          className="coin-image me-2"
-                          src={coin.image}
-                          alt={coin.id}
-                        />
-                        <span className="fw-bolder me-2">{coin.name}</span>
-                        <span className="text-muted">
-                          {coin.symbol.toUpperCase()}
-                        </span>
-                      </div>
+              {filteredCoins.map((coin) => (
+                <Link to={`/coin/${coin.id}`}>
+                  <li
+                    key={coin.id}
+                    className="list-group-item d-flex justify-content-between"
+                  >
+                    <div>
+                      <img
+                        className="coin-image me-2"
+                        src={coin.image}
+                        alt={coin.id}
+                      />
+                      <span className="fw-bolder me-2">{coin.name}</span>
                       <span className="text-muted">
-                        #{coin.market_cap_rank}
+                        {coin.symbol.toUpperCase()}
                       </span>
-                    </li>
-                  </Link>
-                ))
-              ) : (
-                <ul
-                  className="list-group overflow-y-scroll mt-1 searchList"
-                  style={{ width: "24rem" }}
-                >
-                  <li className="list-group-item d-flex justify-content-between text-danger">
-                    Coin not found...
+                    </div>
+                    <span className="text-muted">#{coin.market_cap_rank}</span>
                   </li>
-                </ul>
+                </Link>
+              ))}
+            </ul>
+          ) : (
+            <ul
+              className="list-group mt-1 searchList"
+              style={{ width: "23rem" }}
+            >
+              {search == "" ? null : (
+                <li className="list-group-item text-muted">
+                  No matches for "{search}"
+                </li>
               )}
             </ul>
           )}

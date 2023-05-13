@@ -1,5 +1,6 @@
 import React from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
+import "../TableTitleCoinList/TableTitleCoinList.css"
 
 const TableTitleCoinList = () => {
   const titles = [
@@ -18,7 +19,7 @@ const TableTitleCoinList = () => {
       <th>
         Price <HiChevronUpDown onClick={() => console.log("Hola soy click")} />
       </th>
-      <th>
+      <th className="pointer" onClick={() => console.log("Ordenar")}>
         Price Change (24h)
         <HiChevronUpDown />
       </th>

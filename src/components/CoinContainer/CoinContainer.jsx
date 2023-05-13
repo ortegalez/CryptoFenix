@@ -16,7 +16,7 @@ const CoinContainer = () => {
       .then((resp) => resp.json())
       .then((data) => setCoin(data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [idCoin]);
 
   console.log(coin);
 
