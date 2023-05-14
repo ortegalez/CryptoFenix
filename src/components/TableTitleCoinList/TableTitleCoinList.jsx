@@ -1,6 +1,6 @@
 import React from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
-import "../TableTitleCoinList/TableTitleCoinList.css"
+import "../TableTitleCoinList/TableTitleCoinList.css";
 
 const TableTitleCoinList = () => {
   const titles = [

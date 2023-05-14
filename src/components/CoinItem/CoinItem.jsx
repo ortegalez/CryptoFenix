@@ -15,7 +15,7 @@ const CoinItem = ({ coin, index }) => {
           </div>
         </Link>
       </td>
-      <td>$ {coin.current_price.toLocaleString()}</td>
+      <td>$ {coin.current_price.toFixed(2)}</td>
       <td
         style={{
           color: coin.price_change_percentage_24h > 0 ? "green" : "red",
