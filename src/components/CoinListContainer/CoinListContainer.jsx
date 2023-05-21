@@ -1,11 +1,16 @@
+import { useCoinContext } from "../../context/CoinContext";
+import { useEffect } from "react";
+
 import CoinsList from "../CoinsList/CoinsList";
 import Loading_1 from "../Loaders/Loading_1";
-import { useFetch } from "../../helpers/useFetch";
 import ErrorMessagesAPI from "../ErrorMessage/ErrorMessageAPI";
-import { useCoinContext } from "../../context/CoinContext";
 
 const CoinListContainer = () => {
-  const { data, loading, error } = useCoinContext();
+  const { data, loading, error, setSearchValue } = useCoinContext();
+
+  useEffect(() => {
+    setSearchValue("");
+  }, []);
 
   return loading ? (
     <Loading_1 />

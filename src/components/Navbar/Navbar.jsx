@@ -1,21 +1,13 @@
 import React from "react";
 
-import "../Navbar/Navbar.css";
-import { NavLink, Link } from "react-router-dom";
-import logoFenix from "/public/logoFenix.png";
-import { useState } from "react";
 import { useCoinContext } from "../../context/CoinContext";
+import { NavLink } from "react-router-dom";
+import logoFenix from "../../assets/logoFenix.png";
 import SearchList from "../SeachList/SearchList";
 
+import "../Navbar/Navbar.css";
 const Navbar = () => {
   const { data } = useCoinContext();
-  const [search, setSearch] = useState("");
-
-  // const filteredCoins = data.filter(
-  //   (coin) =>
-  //     coin.name.toLowerCase().includes(search.toLowerCase()) ||
-  //     coin.symbol.toLowerCase().includes(search.toLowerCase())
-  // );
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary ">

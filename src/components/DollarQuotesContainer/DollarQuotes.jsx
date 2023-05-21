@@ -1,15 +1,21 @@
 import React from "react";
-// import { useEffect, useState } from "react";
-import "./DollarQuotes.css";
+import { useEffect } from "react";
+import { useFetch } from "../../helpers/useFetch";
+import { useCoinContext } from "../../context/CoinContext";
 import DollarQuoteItem from "../DollarQuoteItem/DollarQuoteItem";
 import News from "./News";
 import Loading_1 from "../Loaders/Loading_1";
-import { useFetch } from "../../helpers/useFetch";
+import "./DollarQuotes.css";
 
 const DollarQuotes = () => {
-  const { data, loading, error } = useFetch(
+  const { setSearchValue } = useCoinContext();
+  const { data, loading } = useFetch(
     "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
   );
+
+  useEffect(() => {
+    setSearchValue("");
+  }, []);
 
   console.log(data);
 

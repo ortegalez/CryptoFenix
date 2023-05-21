@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useCoinContext } from "../../context/CoinContext";
 import { Link } from "react-router-dom";
 import "../SeachList/SearchList.css";
 
 const SearchList = () => {
   const { data } = useCoinContext();
-  const [search, setSearch] = useState("");
+  const { searchValue, setSearchValue } = useCoinContext();
+
+  useEffect(() => {
+    setSearchValue("");
+  }, []);
 
   const filteredCoins = data.filter(
     (coin) =>
-      coin.name.toLowerCase().includes(search.toLowerCase()) ||
-      coin.symbol.toLowerCase().includes(search.toLowerCase())
+      coin.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(searchValue.toLowerCase())
   );
 
-  console.log(filteredCoins);
-  console.log(search);
+  const handleInputText = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  // console.log(filteredCoins);
+  // console.log(searchValue);
 
   return (
     <>
@@ -27,13 +35,14 @@ const SearchList = () => {
             <input
               className="form-control"
               type="search"
-              placeholder="Search a coin..."
+              placeholder="🔎 Search a coin..."
               aria-label="Search"
-              onChange={(e) => setSearch(e.target.value)}
+              value={searchValue}
+              onChange={handleInputText}
             />
           </form>
 
-          {filteredCoins.length > 0 && search !== "" ? (
+          {filteredCoins.length > 0 && searchValue !== "" ? (
             <ul
               className="list-group overflow-y-scroll mt-1 searchList"
               style={{ width: "24rem" }}
@@ -65,9 +74,9 @@ const SearchList = () => {
               className="list-group mt-1 searchList"
               style={{ width: "23rem" }}
             >
-              {search == "" ? null : (
+              {searchValue == "" ? null : (
                 <li className="list-group-item text-muted">
-                  No matches for "{search}"
+                  No matches for "{searchValue}"
                 </li>
               )}
             </ul>

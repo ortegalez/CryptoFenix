@@ -6,6 +6,8 @@ export const CoinContext = createContext([]);
 export const useCoinContext = () => useContext(CoinContext);
 
 export const CoinContextProvider = ({ children }) => {
+  const [searchValue, setSearchValue] = useState("");
+
   //   const [coins, setCoins] = useState([]);
   //   let url =
   //     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=1&sparkline=false&locale=en";
@@ -22,7 +24,9 @@ export const CoinContextProvider = ({ children }) => {
   );
 
   return (
-    <CoinContext.Provider value={{ data, loading, error }}>
+    <CoinContext.Provider
+      value={{ data, loading, error, searchValue, setSearchValue }}
+    >
       {children}
     </CoinContext.Provider>
   );

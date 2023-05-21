@@ -1,8 +1,14 @@
 import React from "react";
-import SearchList from "../SeachList/SearchList";
 import { useCoinContext } from "../../context/CoinContext";
+import { useEffect } from "react";
 
 const AboutUs = () => {
+  const { setSearchValue } = useCoinContext();
+
+  useEffect(() => {
+    setSearchValue("");
+  }, []);
+
   return (
     <div className="p-3">
       <h2>About Me</h2>
