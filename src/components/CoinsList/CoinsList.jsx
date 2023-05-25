@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CoinItem from "../CoinItem/CoinItem";
 import { BsFillCaretUpFill } from "react-icons/bs";
+import "./CoinsList.css";
 
 const CoinsList = ({ coins }) => {
   const [data, setData] = useState(coins);
