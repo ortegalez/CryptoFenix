@@ -65,7 +65,6 @@ const CoinsList = ({ coins }) => {
                 <BsFillCaretUpFill className="text-black-50" />
               )}
             </th>
-
             <th onClick={handleVolume24h} className="pointer">
               Volume (24h)
               {activeElement === 3 ? (
@@ -74,7 +73,6 @@ const CoinsList = ({ coins }) => {
                 <BsFillCaretUpFill className="text-black-50" />
               )}
             </th>
-
             <th onClick={handleMarketCap} className="pointer">
               Market Cap
               {activeElement === 4 ? (
