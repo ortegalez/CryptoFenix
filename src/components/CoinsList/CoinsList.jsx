@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import CoinItem from "../CoinItem/CoinItem";
-import TableTitleCoinList from "../TableTitleCoinList/TableTitleCoinList";
-import { HiChevronUpDown } from "react-icons/hi2";
+
+import { BsFillCaretUpFill } from "react-icons/bs";
 import "../TableTitleCoinList/TableTitleCoinList.css";
 
 const CoinsList = ({ coins }) => {
   const [data, setData] = useState(coins);
+  const [activeElement, setActiveElement] = useState(4);
 
-  console.log(data);
+  const handleButtonClick = (elementId) => {
+    setActiveElement(elementId);
+  };
 
   const handleCurrentPrice = () => {
     const sortedData = [...data].sort(
       (a, b) => b.current_price - a.current_price
     );
     setData(sortedData);
-    console.log("Ordenado por precio");
+    handleButtonClick(1);
   };
 
   const handlePriceChangePercentage24h = () => {
@@ -22,43 +25,63 @@ const CoinsList = ({ coins }) => {
       (a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h
     );
     setData(sortedData);
-    console.log("Ordenado por porcentaje de cambio");
+    handleButtonClick(2);
+  };
+
+  const handleVolume24h = () => {
+    const sortedData = [...data].sort(
+      (a, b) => b.total_volume - a.total_volume
+    );
+    setData(sortedData);
+    handleButtonClick(3);
   };
 
   const handleMarketCap = () => {
     const sortedData = [...data].sort((a, b) => b.market_cap - a.market_cap);
     setData(sortedData);
-    console.log("Ordenado por Marketcap");
+    handleButtonClick(4);
   };
-
-  // console.log(data);
 
   return (
     <div>
-      <table className="table table-hover w-100">
+      <table className="table table-hover w-100 m-2">
         <thead>
-          {/* <TableTitleCoinList /> */}
           <tr>
             <th>#</th>
             <th>Coin</th>
-            <th>
+            <th onClick={handleCurrentPrice} className="pointer">
               Price
-              <button>
-                <HiChevronUpDown onClick={handleCurrentPrice} />
-              </button>
+              {activeElement === 1 ? (
+                <BsFillCaretUpFill className="text-success" />
+              ) : (
+                <BsFillCaretUpFill className="text-black-50" />
+              )}
             </th>
-            <th className="pointer">
+            <th onClick={handlePriceChangePercentage24h} className="pointer">
               Price Change (24h)
-              <button>
-                <HiChevronUpDown onClick={handlePriceChangePercentage24h} />
-              </button>
+              {activeElement === 2 ? (
+                <BsFillCaretUpFill className="text-success" />
+              ) : (
+                <BsFillCaretUpFill className="text-black-50" />
+              )}
             </th>
-            <th>Volume (24h)</th>
-            <th>
+
+            <th onClick={handleVolume24h} className="pointer">
+              Volume (24h)
+              {activeElement === 3 ? (
+                <BsFillCaretUpFill className="text-success" />
+              ) : (
+                <BsFillCaretUpFill className="text-black-50" />
+              )}
+            </th>
+
+            <th onClick={handleMarketCap} className="pointer">
               Market Cap
-              <button>
-                <HiChevronUpDown onClick={handleMarketCap} />
-              </button>
+              {activeElement === 4 ? (
+                <BsFillCaretUpFill className="text-success" />
+              ) : (
+                <BsFillCaretUpFill className="text-black-50" />
+              )}
             </th>
           </tr>
         </thead>
