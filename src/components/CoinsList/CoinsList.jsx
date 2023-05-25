@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import CoinItem from "../CoinItem/CoinItem";
-
 import { BsFillCaretUpFill } from "react-icons/bs";
 import "../TableTitleCoinList/TableTitleCoinList.css";
 
