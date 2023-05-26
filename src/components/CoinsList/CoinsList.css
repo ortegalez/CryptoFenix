@@ -5,3 +5,16 @@
 .pointer:hover {
   background-color: rgba(0, 0, 0, 0.116);
 }
+
+@media screen and (max-width: 576px) {
+  .table-container {
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    width: 100%; /* Ajusta el ancho de la tabla al contenedor */
+  }
+
+  .fixed-column {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+}

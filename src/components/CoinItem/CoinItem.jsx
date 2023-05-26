@@ -6,7 +6,7 @@ const CoinItem = ({ coin, index }) => {
   return (
     <tr>
       <th scope="row">{index + 1}</th>
-      <td>
+      <td className="fixed-column bg-light">
         <Link className="coin" to={`/coin/${coin.id}`}>
           <img className="coin-image" src={coin.image} alt={coin.id} />
           <div className="coin-name">

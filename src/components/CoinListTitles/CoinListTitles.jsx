@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { BsFillCaretUpFill } from "react-icons/bs";
 
-const CoinListTitles = () => {
+const CoinListTitles = ({ coins }) => {
+  const [data, setData] = useState(coins);
   const [activeElement, setActiveElement] = useState(4);
 
   const handleButtonClick = (elementId) => {

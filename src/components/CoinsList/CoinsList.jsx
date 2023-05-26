@@ -42,12 +42,12 @@ const CoinsList = ({ coins }) => {
   };
 
   return (
-    <div>
+    <div className="table-container">
       <table className="table table-hover w-100 m-2">
         <thead>
           <tr>
             <th>#</th>
-            <th>Coin</th>
+            <th className="fixed-column bg-light">Coin</th>
             <th onClick={handleCurrentPrice} className="pointer">
               Price
               {activeElement === 1 ? (
